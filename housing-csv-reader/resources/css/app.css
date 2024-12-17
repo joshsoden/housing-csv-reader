@@ -1,6 +1,9 @@
 html, body {
     background: #f8f8f8;
     margin: 0;
+    p, input, button{
+        font-family: "Inter", sans-serif;
+    }
 }
 header {
     background: #fff;
@@ -30,4 +33,11 @@ header {
     }
 }
 
-
+button {
+    padding: 12px 16px;
+    font-size: 16px;
+    background: #2147F4;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+}
