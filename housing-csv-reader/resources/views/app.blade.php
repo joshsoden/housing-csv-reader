@@ -8,9 +8,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
-    <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
+    @vite('resources/css/app.css')
 
-    <script src="{{ mix('/js/app.js') }}" defer></script>
+    @vite('resources/js/app.js')
 
     @inertiaHead
 
