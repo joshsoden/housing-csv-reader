@@ -1,9 +1,10 @@
 <template>
+    <header>
+        <div class="flex vertical center">
+            <img src="images/logo.png"/>
+        </div>
+    </header>
+    <main>
 
-    <div>
-
-      Welcome Home!
-
-    </div>
-
+    </main>
 </template>

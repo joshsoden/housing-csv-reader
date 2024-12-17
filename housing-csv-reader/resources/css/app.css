@@ -1,0 +1,33 @@
+html, body {
+    background: #f8f8f8;
+    margin: 0;
+}
+header {
+    background: #fff;
+    border-bottom: 1px solid #e4e4e4;
+    height: 80px;
+
+    div {
+        height: 100%;
+        width: 100%;
+
+        img {
+            height: 30px;
+            width: auto;
+        }
+    }
+}
+
+.flex {
+    display: flex;
+    &.vertical {
+        flex-direction: column;
+    }
+
+    &.center {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
