@@ -5,9 +5,9 @@
         </div>
     </header>
     <main>
-        <div class="flex vertical center">
-            <input type="file" />
-            <button>Import list from file</button>
+        <div class="flex vertical space-around">
+            <input type="file" accept=".csv"/>
+            <button>Import list from .csv file</button>
         </div>
     </main>
 </template>
