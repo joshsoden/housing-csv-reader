@@ -7,7 +7,7 @@
     <main>
         <div class="flex vertical space-around">
             <input type="file" accept=".csv"/>
-            <button>Import list from .csv file</button>
+            <button class="disabled">Import list from .csv file</button>
         </div>
     </main>
 </template>
