@@ -18,7 +18,8 @@ Route::get('/', function () {
    return Inertia::render("Home");
 });
 
-Route::post('submit', function (){
+Route::post('/submit', function () {
+   error_log("/submit request received");
    return response()->json([
        'message' => 'Hello there, it\'s your first response.'
    ], 200);

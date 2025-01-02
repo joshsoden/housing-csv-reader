@@ -7,12 +7,14 @@
     <main>
         <div class="flex vertical space-around">
             <input type="file" accept=".csv" @change="handleFileUpload"/>
-            <button :disabled="isDisabled" :class="{ 'disabled': isDisabled }">Import list from .csv file</button>
+            <button :disabled="isDisabled" @click="handleButtonClick" :class="{ 'disabled': isDisabled }">Import list from .csv file</button>
         </div>
     </main>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     data() {
         return {
@@ -25,6 +27,24 @@ export default {
         },
         setIsDisabled: function(bool) {
             this.isDisabled = bool;
+        },
+        handleButtonClick: function() {
+            if(!this.isDisabled) {
+                this.submitForm();
+            }
+        },
+        submitForm: function() {
+            console.log("submitForm() called");
+
+            let formData = new FormData();
+
+            axios.post(
+                '/submit', 
+                formData
+            )
+            .then((res)=> {
+                alert(res.data.message);
+            });
         }
     }
 }
