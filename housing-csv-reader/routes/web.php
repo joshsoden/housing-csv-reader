@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-
    return Inertia::render("Home");
+});
 
+Route::post('submit', function (){
+   return response()->json([
+       'message' => 'Hello there, it\'s your first response.'
+   ], 200);
 });
