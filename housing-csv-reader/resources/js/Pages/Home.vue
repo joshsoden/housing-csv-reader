@@ -6,7 +6,7 @@
     </header>
     <main>
         <div class="flex vertical space-around">
-            <input type="file" accept=".csv" @change="handleFileUpload" @model="csvFile"/>
+            <input type="file" accept=".csv" @change="handleFileUpload" id="file-input"/>
             <button :disabled="isDisabled" @click="handleButtonClick" :class="{ 'disabled': isDisabled }">Import list from .csv file</button>
         </div>
     </main>
@@ -18,8 +18,7 @@ import axios from "axios";
 export default {
     data() {
         return {
-            isDisabled: true,
-            csvFile: null,
+            isDisabled: true
         }
     },
     methods: {
@@ -38,15 +37,19 @@ export default {
             console.log("submitForm() called");
 
             let formData = new FormData();
-            formData.append("file", this.csvFile);
+                formData.append("file", document.querySelector('#file-input').files[0]
+            );
 
-            axios.post(
-                '/submit', 
-                formData
-            )
+            console.log(formData);
 
-            .then((res)=> {
-                alert(res.data.message);
+            axios.post('/submit', formData, { 
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            .then((res) => {
+                console.log("Retrieved");
+                console.log(res);
             });
         }
     }

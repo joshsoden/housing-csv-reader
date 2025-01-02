@@ -2,6 +2,7 @@
 
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,4 @@ Route::get('/', function () {
    return Inertia::render("Home");
 });
 
-Route::post('/submit', function () {
-   error_log("/submit request received");
-
-   return response()->json([
-       'message' => 'Hello there, it\'s your first response.'
-   ], 200);
-});
+Route::post('/submit', [FileController::class, 'submit']); 
