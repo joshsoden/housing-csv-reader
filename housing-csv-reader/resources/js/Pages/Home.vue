@@ -6,7 +6,7 @@
     </header>
     <main>
         <div class="flex vertical space-around">
-            <input type="file" accept=".csv" @change="handleFileUpload"/>
+            <input type="file" accept=".csv" @change="handleFileUpload" @model="csvFile"/>
             <button :disabled="isDisabled" @click="handleButtonClick" :class="{ 'disabled': isDisabled }">Import list from .csv file</button>
         </div>
     </main>
@@ -19,6 +19,7 @@ export default {
     data() {
         return {
             isDisabled: true,
+            csvFile: null,
         }
     },
     methods: {
@@ -37,11 +38,13 @@ export default {
             console.log("submitForm() called");
 
             let formData = new FormData();
+            formData.append("file", this.csvFile);
 
             axios.post(
                 '/submit', 
                 formData
             )
+
             .then((res)=> {
                 alert(res.data.message);
             });
