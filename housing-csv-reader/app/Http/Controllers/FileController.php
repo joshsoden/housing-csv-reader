@@ -11,8 +11,13 @@ class FileController extends Controller
      */
     public function submit(Request $request)
     {
-        error_log(json_encode($request->file()));
         error_log("/submit controller route");
+
+        if ($request->hasFile("csv_file")) {
+            error_log("File uploaded!");
+        } else {
+            error_log("no file :(");
+        }
 
         return response('hello');
     }
