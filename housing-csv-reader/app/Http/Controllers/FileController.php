@@ -16,8 +16,13 @@ class FileController extends Controller
 
         if ($request->hasFile("csv_file")) {
             error_log("File uploaded; reading file");
-            $csv = $request->file("csv_file");
+            $contents = file_get_contents($request->file("csv_file"));
+            $array = explode("\n", $contents);
+            foreach($array as $a) {
+                error_log($a);
+            }
 
+            // $contents = file_get_contents($request->file("csv_file"));
             // TODO: Call parser with get_contents method
             // $reader = new CsvParser($csv->getRealPath());
             // $reader->read_file();
