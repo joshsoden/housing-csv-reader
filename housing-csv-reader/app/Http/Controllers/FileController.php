@@ -16,20 +16,29 @@ class FileController extends Controller
 
         if ($request->hasFile("csv_file")) {
             error_log("File uploaded; reading file");
-            $contents = file_get_contents($request->file("csv_file"));
-            $array = explode("\n", $contents);
-            foreach($array as $a) {
-                error_log($a);
-            }
-
-            // $contents = file_get_contents($request->file("csv_file"));
-            // TODO: Call parser with get_contents method
-            // $reader = new CsvParser($csv->getRealPath());
-            // $reader->read_file();
+            $this->process_request_file($request);
         } else {
             error_log("no file :(");
         }
 
         return response('hello');
     }
+
+    private function process_request_file(Request $request)
+    {
+        $csv_contents = $this->retrieve_contents_from_request($request, "csv_file");
+        $csv_lines = $this->split_content_lines($csv_contents);
+    }
+
+    private function retrieve_contents_from_request(Request $request, String $input_key)
+    {
+        return file_get_contents($request->file("csv_file"));
+    }
+
+    private function split_content_lines(String $contents)
+    {
+        return explode("\n", $contents);
+    }
+
+
 }
