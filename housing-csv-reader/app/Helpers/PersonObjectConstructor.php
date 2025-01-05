@@ -1,21 +1,19 @@
-<?php 
+<?php
 
 namespace app\Helpers;
 
-class PersonObjectConstructor 
+class PersonObjectConstructor
 {
     // For checking against strings
     public array $titles = ["Mr", "Mrs", "Ms", "Mister", "Miss", "Dr", "Prof"];
     public array $joins  = ["&", "and"];
     public array $people = [];
 
-    function __construct() {}
-
     function create_person_object($name) {
         $valid_name_array = $this->return_valid_name($name);
         if ($valid_name_array) {
             return $this->create_person_from_name_array($valid_name_array);
-        } else { 
+        } else {
             return null;
         }
     }
@@ -30,7 +28,7 @@ class PersonObjectConstructor
         return $name_array;
     }
 
-    // Check whether the array has a title; required field 
+    // Check whether the array has a title; required field
     function has_title($name_array) {
         return $this->array_contains_config_values($name_array, $this->titles);
     }
@@ -59,7 +57,7 @@ class PersonObjectConstructor
     }
 
     function create_people_from_multiple_names($name_array) {
-        // Split array to before & after join value 
+        // Split array to before & after join value
         $join_index = key(array_intersect($name_array, $this->joins));
         $first_person = array_slice($name_array, 0, $join_index);
         $second_person = array_slice($name_array, $join_index + 1);
@@ -79,7 +77,7 @@ class PersonObjectConstructor
         $array_length = count($name_array);
         $title = $name_array[0];
         $first_name = null;
-        $initial = null; 
+        $initial = null;
         $last_name = $name_array[$array_length - 1];
 
         if ($array_length > 2) {
