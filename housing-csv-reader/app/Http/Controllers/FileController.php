@@ -15,21 +15,23 @@ class FileController extends Controller
     {
         error_log("/submit controller route");
 
+        $person_array = array();
+
         if ($request->hasFile("csv_file")) {
             error_log("File uploaded; reading file");
-            $this->process_request_file($request);
+            $person_array = $this->process_request_file($request);
         } else {
             error_log("no file :(");
         }
 
-        return response('hello');
+        return response()->json($person_array);
     }
 
     private function process_request_file(Request $request)
     {
         $csv_contents = $this->retrieve_contents_from_request($request, "csv_file");
         $csv_lines = $this->split_content_lines($csv_contents);
-        $person_array = $this->process_csv_lines($csv_lines);
+        return $this->process_csv_lines($csv_lines);
     }
 
     private function retrieve_contents_from_request(Request $request, String $input_key)
