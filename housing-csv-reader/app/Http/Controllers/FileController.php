@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use app\Helpers\CsvParser;
+use app\Helpers\PersonObjectConstructor;
 use Illuminate\Http\Request;
 
 class FileController extends Controller
@@ -28,6 +29,7 @@ class FileController extends Controller
     {
         $csv_contents = $this->retrieve_contents_from_request($request, "csv_file");
         $csv_lines = $this->split_content_lines($csv_contents);
+        $person_array = $this->process_csv_lines($csv_lines);
     }
 
     private function retrieve_contents_from_request(Request $request, String $input_key)
@@ -38,6 +40,18 @@ class FileController extends Controller
     private function split_content_lines(String $contents)
     {
         return explode("\n", $contents);
+    }
+
+    private function process_csv_lines($csv_lines)
+    {
+        error_log("process_csv_lines() called");
+        error_log(json_encode($csv_lines));
+        $parser = new PersonObjectConstructor();
+        foreach($csv_lines as $line) {
+            error_log("Parsing line...");
+            // $objects = $parser->create_person_object($line);
+            // error_log(json_encode($objects));
+        }
     }
 
 

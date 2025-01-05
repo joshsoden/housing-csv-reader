@@ -14,7 +14,7 @@ class PersonObjectConstructor
     function create_person_object($name) {
         $valid_name_array = $this->return_valid_name($name);
         if ($valid_name_array) {
-            $this->create_person_from_name_array($valid_name_array);
+            return $this->create_person_from_name_array($valid_name_array);
         } else { 
             return null;
         }
