@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use app\Helpers\CsvParser;
 use app\Helpers\PersonObjectConstructor;
 use Illuminate\Http\Request;
 
 class FileController extends Controller
 {
-    // CSV parser
-    public CsvParser $parser;
-
     public function submit(Request $request)
     {
         error_log("/submit controller route");
