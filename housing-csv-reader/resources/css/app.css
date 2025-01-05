@@ -59,6 +59,13 @@ main {
             cursor: pointer;
             background: var(--colour-button-primary-hover);
         }
+
+        &.disabled {
+            opacity: 0.7;
+            &:hover {
+                cursor: not-allowed;
+            }
+        }
     }
 }
 
