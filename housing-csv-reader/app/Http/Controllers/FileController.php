@@ -45,13 +45,11 @@ class FileController extends Controller
         $parser = new PersonObjectConstructor();
         $people = array();
         foreach($csv_lines as $line) {
-            error_log("Parsing line...");
             $person_objects = $parser->create_person_object($line);
             if ($person_objects) {
                 array_push($people, $person_objects);
             }
         }
-        error_log(json_encode($people));
         return $people;
     }
 }
