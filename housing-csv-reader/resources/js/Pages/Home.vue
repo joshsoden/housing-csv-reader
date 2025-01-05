@@ -9,6 +9,14 @@
             <input type="file" accept=".csv" ref="file" @change="handleFileUpload" id="file-input"/>
             <button :disabled="isDisabled" @click="handleButtonClick" :class="{ 'disabled': isDisabled }">Import list from .csv file</button>
         </div>
+        <div>
+            <p>List of people:</p>
+            <ul>
+                <li v-for="person in csvPeople">
+                    <p>{{ person['first_name'] }}</p>
+                </li>
+            </ul>
+        </div>
     </main>
 </template>
 
@@ -19,7 +27,8 @@ export default {
     data() {
         return {
             isDisabled: true,
-            csvFile: null
+            csvFile: null,
+            csvPeople: [],
         }
     },
     methods: {
@@ -41,12 +50,12 @@ export default {
             let formData = new FormData();
             formData.append('csv_file', this.csvFile);
 
-            axios.post('/submit', formData, { 
+            axios.post('/submit', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             })
             .then((res) => {
-                console.log("Retrieved");
-                console.log(res);
+                this.people = res.data;
+                console.log(this.people);
             });
         }
     }
