@@ -21,6 +21,7 @@ class PersonObjectConstructor
     // Check if name is valid
     function return_valid_name($name) {
         // Check for required fields
+        $name = str_replace("\r", "", $name);
         $name_array = explode(" ", $name);
         if (count($name_array) < 2 || !$this->has_title($name_array)) {
             return false;
@@ -43,7 +44,7 @@ class PersonObjectConstructor
     }
 
     function trim_name($name) {
-        return trim($name, ".");
+        return trim($name, ".,");
     }
 
     function create_person_from_name_array($name_array) {
@@ -90,7 +91,7 @@ class PersonObjectConstructor
         }
 
         $person = $this->create_person($title, $first_name, $initial, $last_name);
-        array_push($this->people, $person);
+        return $person;
     }
 
     function create_person($title, $first_name, $initial, $last_name) {

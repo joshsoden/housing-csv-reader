@@ -10,7 +10,7 @@ class FileController extends Controller
 {
     // CSV parser
     public CsvParser $parser;
-    
+
     public function submit(Request $request)
     {
         error_log("/submit controller route");
@@ -44,15 +44,16 @@ class FileController extends Controller
 
     private function process_csv_lines($csv_lines)
     {
-        error_log("process_csv_lines() called");
-        error_log(json_encode($csv_lines));
         $parser = new PersonObjectConstructor();
+        $people = array();
         foreach($csv_lines as $line) {
             error_log("Parsing line...");
-            // $objects = $parser->create_person_object($line);
-            // error_log(json_encode($objects));
+            $person_objects = $parser->create_person_object($line);
+            if ($person_objects) {
+                array_push($people, $person_objects);
+            }
         }
+        error_log(json_encode($people));
+        return $people;
     }
-
-
 }
