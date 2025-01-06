@@ -67,6 +67,28 @@ main {
             }
         }
     }
+
+    .card-container {
+        padding: 12px 24px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        gap: 24px;
+
+        .homeowner-card {
+            background: var(--colour-white);
+            height: auto;
+            width: 200px;
+            border-radius: 10px;
+            border: 1px solid var(--colour-border);
+            padding: 12px 24px;
+
+            img {
+                border-radius: 50%;
+            }
+        }
+    }
 }
 
 .flex {
