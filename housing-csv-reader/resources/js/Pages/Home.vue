@@ -10,12 +10,15 @@
             <button :disabled="isDisabled" @click="handleButtonClick" :class="{ 'disabled': isDisabled }">Import list from .csv file</button>
         </div>
         <div>
-            <p>List of people:</p>
-            <ul>
-                <li v-for="person in csvPeople">
-                    <p>{{ person['first_name'] }}</p>
-                </li>
-            </ul>
+            <div class="card-container">
+                <div class="homeowner-card" v-for="person in csvPeople">
+                    <img src="https://placehold.co/100"/>
+                    <p><b>Title:</b> {{ person['title'] }}</p>
+                    <p><b>Initial:</b> {{ person['initial'] }}</p>
+                    <p><b>First name:</b> {{ person['first_name'] }}</p>
+                    <p><b>Last name:</b> {{ person['last_name'] }}</p>
+                </div>
+            </div>
         </div>
     </main>
 </template>
@@ -54,8 +57,7 @@ export default {
                 headers: { 'Content-Type': 'multipart/form-data' },
             })
             .then((res) => {
-                this.people = res.data;
-                console.log(this.people);
+                this.csvPeople = res.data;
             });
         }
     }
