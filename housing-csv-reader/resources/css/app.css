@@ -72,8 +72,8 @@ main {
         padding: 12px 24px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
-        align-items: center;
+        justify-content: start;
+        align-items: start;
         gap: 24px;
 
         .homeowner-card {
@@ -83,8 +83,12 @@ main {
             border-radius: 10px;
             border: 1px solid var(--colour-border);
             padding: 12px 24px;
+            display: grid;
+            grid-template-rows: auto auto auto auto auto;
+            justify-content: center;
 
             img {
+                justify-self: center;
                 border-radius: 50%;
             }
         }
