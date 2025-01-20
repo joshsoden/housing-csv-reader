@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('homeowners', function (Blueprint $table) {
             $table->id();
+
+            $table->string('title');
+            $table->string('initial', length: 1)->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name');
+
             $table->timestamps();
         });
     }
