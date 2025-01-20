@@ -87,6 +87,10 @@ main {
             grid-template-rows: auto auto auto auto auto;
             justify-content: center;
 
+            box-shadow: 10px 10px 17px -18px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 10px 10px 17px -18px rgba(0,0,0,0.75);
+            -moz-box-shadow: 10px 10px 17px -18px rgba(0,0,0,0.75);
+
             img {
                 justify-self: center;
                 border-radius: 50%;
