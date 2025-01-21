@@ -9,5 +9,4 @@ class Homeowner extends Model
 {
     use HasFactory;
 
-    
 }
