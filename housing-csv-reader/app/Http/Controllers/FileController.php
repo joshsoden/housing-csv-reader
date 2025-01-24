@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use app\Helpers\PersonObjectConstructor;
+use App\Models\Homeowner;
 use Illuminate\Http\Request;
 
 class FileController extends Controller
@@ -25,7 +26,11 @@ class FileController extends Controller
 
     public function store(Request $request)
     {
-        error_log(json_encode($request));
+        $homeowners = $request->input('homeowners');
+        foreach($homeowners as $homeowner)
+        {
+            Homeowner::create($homeowner);
+        }
         return response("Hello", 200);
     }
 

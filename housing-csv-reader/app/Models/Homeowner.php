@@ -9,4 +9,5 @@ class Homeowner extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'initial', 'first_name', 'last_name'];
 }
