@@ -23,6 +23,12 @@ class FileController extends Controller
         return response()->json($person_array);
     }
 
+    public function store(Request $request)
+    {
+        error_log(json_encode($request));
+        return response("Hello", 200);
+    }
+
     private function process_request_file(Request $request)
     {
         error_log("FileController -> process_request_file() called");

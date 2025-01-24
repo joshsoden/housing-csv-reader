@@ -23,7 +23,7 @@
                 </div>
                 
                 <div class="flex center">
-                    <button>Submit homeowner details</button>
+                    <button @click="handleHomeownerSubmission">Submit homeowner details</button>
                 </div>
             </div>
         </div>
@@ -65,6 +65,20 @@ export default {
             })
             .then((res) => {
                 this.csvPeople = res.data;
+            });
+        },
+        handleHomeownerSubmission: function() {
+            console.log("handleHomeownerSubmission() called!");
+
+            let data = {
+                homeowners: this.csvPeople
+            };
+
+            axios.post('/store', data, {
+                headers: { 'Content-Type': 'application/json' },
+            })
+            .then((res) => {
+                console.log(res);
             });
         }
     }
