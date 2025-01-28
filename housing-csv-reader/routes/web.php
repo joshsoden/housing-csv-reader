@@ -20,3 +20,5 @@ Route::get('/', function () {
 });
 
 Route::post('/submit', [FileController::class, 'submit']); 
+
+Route::post('/store', [FileController::class, 'store']);
