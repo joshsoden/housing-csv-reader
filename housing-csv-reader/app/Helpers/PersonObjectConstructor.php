@@ -47,6 +47,15 @@ class PersonObjectConstructor
         return trim($name, ".,");
     }
 
+    function trim_name_array($array) {
+        $trimmed_array = array();
+        foreach($array as $item)
+        {
+            array_push($trimmed_array, $this->trim_name($item));
+        }
+        return $trimmed_array;
+    }
+
     function create_person_from_name_array($name_array) {
         if ($this->has_multiple_names($name_array)) {
             // Process with multiple
@@ -74,6 +83,9 @@ class PersonObjectConstructor
     }
 
     function create_person_from_single_name($name_array) {
+        // Trim values
+        $name_array = $this->trim_name_array($name_array);
+
         // get length of array
         $array_length = count($name_array);
         $title = $name_array[0];
@@ -83,7 +95,7 @@ class PersonObjectConstructor
 
         if ($array_length > 2) {
             $first = $name_array[1];
-            if (strlen($this->trim_name($first)) == 1) {
+            if (strlen($first) == 1) {
                 $initial = $this->trim_name($first);
             } else {
                 $first_name = $first;
