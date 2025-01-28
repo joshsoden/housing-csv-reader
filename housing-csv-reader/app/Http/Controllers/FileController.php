@@ -58,9 +58,7 @@ class FileController extends Controller
         error_log("FileController -> process_csv_lines() called");
         $people = array();
         foreach($csv_lines as $line) {
-            error_log("Calling constructor line parser");
             $person_objects = $constructor->create_person_object($line);
-            error_log("Called constructor line parser!");
             if ($person_objects) {
                 array_push($people, $person_objects);
             }
