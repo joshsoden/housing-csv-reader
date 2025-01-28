@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use app\Helpers\PersonObjectConstructor;
 use App\Models\Homeowner;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class FileController extends Controller
@@ -27,10 +28,7 @@ class FileController extends Controller
     public function store(Request $request)
     {
         $homeowners = $request->input('homeowners');
-        foreach($homeowners as $homeowner)
-        {
-            Homeowner::create($homeowner);
-        }
+        DB::table('Homeowners')->insert($homeowners);
         return response("Hello", 200);
     }
 
