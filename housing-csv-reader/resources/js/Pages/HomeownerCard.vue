@@ -9,6 +9,7 @@
 
 <template>
     <div class="homeowner-card">
+        <button>X</button>
         <img src="https://placehold.co/100"/>
         <p><b>Title:</b> {{ homeowner.title }}</p>
         <p><b>Initial:</b> {{ homeowner.initial }}</p>

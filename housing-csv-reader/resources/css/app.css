@@ -77,6 +77,7 @@ main {
         gap: 24px;
 
         .homeowner-card {
+            position: relative;
             background: var(--colour-white);
             height: auto;
             width: 200px;
@@ -94,6 +95,18 @@ main {
             img {
                 justify-self: center;
                 border-radius: 50%;
+            }
+
+            button {
+                padding: 4px;
+                background: none;
+                color: #888;
+                position: absolute;
+                top: 8px;
+                left: 8px;
+                &:hover {
+                    color: #aaa;
+                }
             }
         }
     }
