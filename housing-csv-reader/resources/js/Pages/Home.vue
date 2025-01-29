@@ -15,7 +15,7 @@
         </div>
         <div>
             <div class="homeowner-container" v-if="csvPeople.length > 0">
-                <HomeownerCard v-for="person in csvPeople"/>   
+                <HomeownerCard v-for="person in csvPeople" :title="person['title']" :initial="person['initial']" :first_name="person['first_name']" :last_name="person['last_name']" />   
 
                 <div class="flex center">
                     <button @click="handleHomeownerSubmission">Submit homeowner details</button>
