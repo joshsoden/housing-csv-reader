@@ -15,7 +15,9 @@
         </div>
         <div>
             <div class="homeowner-container" v-if="csvPeople.length > 0">
-                <HomeownerCard v-for="person in csvPeople" :homeowner="person" />   
+                <div class="card-container">
+                    <HomeownerCard v-for="person in csvPeople" :homeowner="person" />   
+                </div>
 
                 <div class="flex center">
                     <button @click="handleHomeownerSubmission">Submit homeowner details</button>

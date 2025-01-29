@@ -8,13 +8,11 @@
 </script>
 
 <template>
-    <div class="card-container">
-        <div class="homeowner-card">
-            <img src="https://placehold.co/100"/>
-            <p><b>Title:</b> {{ homeowner.title }}</p>
-            <p><b>Initial:</b> {{ homeowner.initial }}</p>
-            <p><b>First name:</b> {{ homeowner.first_name }}</p>
-            <p><b>Last name:</b> {{ homeowner.last_name }}</p>
-        </div>
+    <div class="homeowner-card">
+        <img src="https://placehold.co/100"/>
+        <p><b>Title:</b> {{ homeowner.title }}</p>
+        <p><b>Initial:</b> {{ homeowner.initial }}</p>
+        <p><b>First name:</b> {{ homeowner.first_name }}</p>
+        <p><b>Last name:</b> {{ homeowner.last_name }}</p>
     </div>
 </template>
